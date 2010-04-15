@@ -36,9 +36,9 @@ def main():
         if st == '0':
             hosts['up'] += 1
         elif st == '1':
-            hosts['unreachable'] += 1
-        elif st == '2':
             hosts['down'] += 1
+        elif st == '2':
+            hosts['unreachable'] += 1
         else:
             hosts['unknown'] += 1
 
