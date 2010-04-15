@@ -10,6 +10,8 @@ BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 
 Prereq:		icinga
 
+Buildarch:	noarch
+
 %description
 Simple status output for mobile devices.
 
