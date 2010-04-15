@@ -1,5 +1,5 @@
 Name:		icinga-mobile-status
-Version:	20100415.1
+Version:	20100415.2
 Release:	1%{?dist}
 Summary:	Simple status output for mobile devices.
 
