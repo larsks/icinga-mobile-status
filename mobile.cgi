@@ -2,6 +2,7 @@
 
 import sys
 import socket
+import time
 
 from Cheetah.Template import Template
 
@@ -56,7 +57,10 @@ def main():
     t = Template.compile(open('/usr/share/icinga/templates/mobile.html').read())
     print 'Content-type: text/html'
     print
-    print t(namespaces={'hosts': hosts, 'services': services})
+    print t(namespaces={
+        'hosts': hosts,
+        'services': services,
+        'lastupdate': time.ctime()})
 
 if __name__ == '__main__':
     main()

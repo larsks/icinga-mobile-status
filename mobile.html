@@ -12,13 +12,20 @@
 		.critical { background-color: red; }
 		.warn {background-color: yellow; }
 		.okay {background-color: green; }
+		.footer {background-color: #c0c0c0; }
 
 		body {background-color: black; font-family: Arial, Verdana, sans-serif; padding: 0; margin: 0;}
 		p {padding: 1ex; margin: 0;}
 		h2 {margin:0; padding: 1ex; background-color: black; color: white; width: 100%;}
 		</style>
+
+		<script type="text/javascript">
+			function timedRefresh(timeoutPeriod) {
+				setTimeout("location.reload(true);",timeoutPeriod);
+			}
+		</script>
 	</head>
-	<body>
+	<body onload="javascript:timedRefresh(30000);">
 
 		<h2>Hosts</h2>
 
@@ -43,6 +50,8 @@
 		#if $services.okay
 		<p class="okay"><a href="/icinga/cgi-bin/status.cgi?hostgroup=all&style=detail&servicestatustypes=2&hoststatustypes=2">$services.okay okay</a></p>
 		#end if
+
+		<p class="footer">$lastupdate</p>
 
 	</body>
 </html>
