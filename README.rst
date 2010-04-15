@@ -13,5 +13,5 @@ Requirements
 This CGI requires `mk-livestatus`_, an event broker plugin for Icinga and
 Nagios that provides a lightweight interface to current status information.
 
-.. mk-livestatus: http://mathias-kettner.de/checkmk_livestatus.html
+.. _mk-livestatus: http://mathias-kettner.de/checkmk_livestatus.html
 
