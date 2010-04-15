@@ -1,0 +1,4 @@
+#!/bin/sh
+
+git archive --prefix=icinga-mobile-status/ HEAD | gzip > icinga-mobile-status.tar.gz
+
