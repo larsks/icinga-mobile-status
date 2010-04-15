@@ -32,7 +32,7 @@ def main():
     hosts = { 'up': 0, 'down': 0, 'unreachable': 0, 'unknown': 0}
     services = { 'okay': 0, 'warn': 0, 'critical': 0, 'unknown': 0 }
 
-    hoststatus = status("GET hosts\nColumns: state\nFilter: notifications_enabled=1")
+    hoststatus = status("GET hosts\nColumns: state\nFilter: notifications_enabled = 1")
     for st in hoststatus.split():
         if st == '0':
             hosts['up'] += 1
@@ -43,7 +43,7 @@ def main():
         else:
             hosts['unknown'] += 1
 
-    svcstatus = status("GET services\nColumns: state\nFilter: notifications_enabled=1")
+    svcstatus = status("GET services\nColumns: state\nFilter: notifications_enabled = 1")
     for st in svcstatus.split():
         if st == '0':
             services['okay'] += 1
