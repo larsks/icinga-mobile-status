@@ -5,7 +5,7 @@ Summary:	Simple status output for mobile devices.
 
 Group:		Optional
 License:	GPL
-Source0:	%{name}-%{version}.tar.gz
+Source0:	%{name}.tar.gz
 BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 
 Prereq:		icinga
