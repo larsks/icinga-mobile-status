@@ -26,22 +26,22 @@
 		<p class="critical"><a href="/icinga/cgi-bin/status.cgi?hostgroup=all&style=hostdetail&hoststatustypes=4">$hosts.down down</a></p>
 		#end if
 		#if $hosts.unreachable
-		<p class="warn"> <a href="/cgi-bin/status.cgi?hostgroup=all&style=hostdetail&hoststatustypes=8">$hosts.unreachable unreachable</a></p>
+		<p class="warn"> <a href="/icinga/cgi-bin/status.cgi?hostgroup=all&style=hostdetail&hoststatustypes=8">$hosts.unreachable unreachable</a></p>
 		#end if
 		#if $hosts.up
-		<p class="okay"><a href="/cgi-bin/status.cgi?hostgroup=all&style=hostdetail&hoststatustypes=2">$hosts.up up</a></p>
+		<p class="okay"><a href="/icinga/cgi-bin/status.cgi?hostgroup=all&style=hostdetail&hoststatustypes=2">$hosts.up up</a></p>
 		#end if
 
 		<h2>Services</h2>
 
 		#if $services.critical
-		<p class="critical"><a href="/cgi-bin/status.cgi?hostgroup=all&style=detail&servicestatustypes=16&hoststatustypes=2">$services.critical critical</a></p>
+		<p class="critical"><a href="/icinga/cgi-bin/status.cgi?hostgroup=all&style=detail&servicestatustypes=16&hoststatustypes=2">$services.critical critical</a></p>
 		#end if
 		#if $services.warn
-		<p class="warn"><a href="/cgi-bin/status.cgi?hostgroup=all&style=detail&servicestatustypes=4&hoststatustypes=2">$services.warn warn</a></p>
+		<p class="warn"><a href="/icinga/cgi-bin/status.cgi?hostgroup=all&style=detail&servicestatustypes=4&hoststatustypes=2">$services.warn warn</a></p>
 		#end if
 		#if $services.okay
-		<p class="okay"><a href="/cgi-bin/status.cgi?hostgroup=all&style=detail&servicestatustypes=2&hoststatustypes=2">$services.okay okay</a></p>
+		<p class="okay"><a href="/icinga/cgi-bin/status.cgi?hostgroup=all&style=detail&servicestatustypes=2&hoststatustypes=2">$services.okay okay</a></p>
 		#end if
 
 	</body>
