@@ -43,7 +43,7 @@ def main():
         else:
             hosts['unknown'] += 1
 
-    hoststatus = status("GET services\nColumns: state\nFilter: notifications_enabled=1")
+    svcstatus = status("GET services\nColumns: state\nFilter: notifications_enabled=1")
     for st in svcstatus.split():
         if st == '0':
             services['okay'] += 1
