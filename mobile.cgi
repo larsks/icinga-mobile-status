@@ -89,7 +89,8 @@ def results(hosts, services):
     print t(namespaces={
         'hosts': hosts,
         'services': services,
-        'lastupdate': time.ctime()})
+        'lastupdate': time.ctime(),
+        'title': TITLE})
 
 def main():
     hosts = get_host_status()
