@@ -6,6 +6,7 @@ import time
 
 from Cheetah.Template import Template
 
+TITLE           = 'IRCS Monitoring'
 SOCKET_PATH     = '/var/icinga/rw/live'
 BUFSIZE         = 4096
 
@@ -22,7 +23,7 @@ def read_data(s):
 def send_query (cmd):
     s = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
     s.connect(SOCKET_PATH)
-    s.send(cmd)
+    s.send(cmd + '\n')
     s.shutdown(socket.SHUT_WR)
     response = read_data(s)
     s.close()

@@ -6,7 +6,7 @@
 	xsi:schemaLocation="http://www.w3.org/MarkUp/SCHEMA/xhtml11.xsd"
 	xml:lang="en">
 	<head>            
-		<title>Status</title>
+		<title>$title</title>
 		<meta name="viewport" content="width=device-width"/>
 		<style type="text/css">
 		.critical { background-color: red; }
@@ -17,6 +17,7 @@
 		body {background-color: black; font-family: Arial, Verdana, sans-serif; padding: 0; margin: 0;}
 		p {padding: 1ex; margin: 0;}
 		h2 {margin:0; padding: 1ex 0 1ex 0; background-color: black; color: white; width: 100%;}
+		h1 {margin:0; padding: 1ex 0 1ex 0; background-color: yellow; color: white; width: 100%;}
 		</style>
 
 		<script type="text/javascript">
@@ -26,6 +27,7 @@
 		</script>
 	</head>
 	<body onload="javascript:timedRefresh(30000);">
+		<h1 class="title">$title</h1>
 
 		<h2>Hosts</h2>
 
