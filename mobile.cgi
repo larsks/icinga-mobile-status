@@ -6,8 +6,8 @@ import time
 
 from Cheetah.Template import Template
 
-SOCKET_PATH = '/var/icinga/rw/live'
-BUFSIZE = 4096
+SOCKET_PATH     = '/var/icinga/rw/live'
+BUFSIZE         = 4096
 
 def read_data(s):
     buffer = []
@@ -19,7 +19,7 @@ def read_data(s):
 
     return ''.join(buffer)
 
-def status (cmd):
+def send_query (cmd):
     s = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
     s.connect(SOCKET_PATH)
     s.send(cmd)
@@ -29,16 +29,30 @@ def status (cmd):
 
     return response
 
+def livestatus (what, filters={}, stats=[]):
+    cmdvec = [ 'GET %s' % what ]
+
+    for k,v in filters.items():
+        cmdvec.append('Filter: %s = %s' % (k,v))
+        
+    for k,v in stats:
+        cmdvec.append('Stats: %s = %s' % (k,v))
+
+    return send_query('\n'.join(cmdvec))
+
 def get_host_status():
-    hoststatus = status(
-        'GET hosts\n'
-        'Filter: notifications_enabled = 1\n'
-        'Filter: acknowledged = 0\n'
-        'Stats: state = 0\n'
-        'Stats: state = 1\n'
-        'Stats: state = 2\n'
-        'Stats: state = 3\n'
-    )
+    hoststatus = livestatus('hosts',
+        filters = dict(
+            notifications_enabled=1,
+            acknowledged=0,
+            ),
+        stats = (
+            ( 'state', 0 ),
+            ( 'state', 1 ),
+            ( 'state', 2 ),
+            ( 'state', 3 ),
+            ))
+
     hosts = dict(zip(
         ('up', 'down', 'unreachable', 'unknown'),
         [int(x) for x in hoststatus.split(';')]
@@ -47,15 +61,18 @@ def get_host_status():
     return hosts
 
 def get_service_status():
-    svcstatus = status(
-        'GET services\n'
-        'Filter: notifications_enabled = 1\n'
-        'Filter: acknowledged = 0\n'
-        'Stats: state = 0\n'
-        'Stats: state = 1\n'
-        'Stats: state = 2\n'
-        'Stats: state = 3\n'
-    )
+    svcstatus = livestatus('services',
+        filters = dict(
+            notifications_enabled=1,
+            acknowledged=0,
+            ),
+        stats = (
+            ( 'state', 0 ),
+            ( 'state', 1 ),
+            ( 'state', 2 ),
+            ( 'state', 3 ),
+            ))
+
     services = dict(zip(
         ('okay', 'warn', 'critical', 'unknown'),
         [int(x) for x in svcstatus.split(';')]
