@@ -42,11 +42,14 @@ def livestatus (what, filters={}, stats=[]):
     return send_query('\n'.join(cmdvec))
 
 def get_host_status():
+    filters = {}
+
+    if not os.environ.get('PATH_INFO') == '/all':
+        filters['notifications_enabled'] = 1
+        filters['acknowledged'] = 0
+
     hoststatus = livestatus('hosts',
-        filters = dict(
-            notifications_enabled=1,
-            acknowledged=0,
-            ),
+        filters,
         stats = (
             ( 'state', 0 ),
             ( 'state', 1 ),
@@ -62,11 +65,14 @@ def get_host_status():
     return hosts
 
 def get_service_status():
+    filters = {}
+
+    if not os.environ.get('PATH_INFO') == '/all':
+        filters['notifications_enabled'] = 1
+        filters['acknowledged'] = 0
+
     svcstatus = livestatus('services',
-        filters = dict(
-            notifications_enabled=1,
-            acknowledged=0,
-            ),
+        filters,
         stats = (
             ( 'state', 0 ),
             ( 'state', 1 ),
